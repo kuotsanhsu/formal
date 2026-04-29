@@ -31,6 +31,4 @@ Candidate names and traditions to check later:
 
 ## Ideas To Revisit
 
-- Lean as Begriffsschrift / Characteristica Universalis rather than ordinary programming.
-- Formalization as a way to test whether an apparent understanding survives exact notation.
 - The danger that too much recorded memory dissipates attention instead of preserving it.

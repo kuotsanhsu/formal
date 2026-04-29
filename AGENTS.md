@@ -8,6 +8,11 @@ These instructions apply to the whole repository.
 - Do not add unnecessary hard line breaks inside Markdown paragraphs. The user reads Markdown in VS Code with soft wrapping.
 - Keep durable instruction files concise. If this file or similar directory-aware hint files grow long, discuss a revision with the user.
 
+## Project Leitmotifs
+
+- Treat Lean 4 as Begriffsschrift / Characteristica Universalis: a disciplined notation for thought, not ordinary programming.
+- Treat formalization as a test of whether apparent understanding survives exact notation.
+
 ## Git
 
 - The user prefers to perform git operations themselves.

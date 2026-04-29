@@ -2,11 +2,16 @@
 
 This is the durable map for the long project of understanding Gödel's first incompleteness theorem through Lean 4 formalization.
 
-The main goal is not merely to write Lean code. Lean should function as a disciplined conceptual notation, closer in spirit to Frege's Begriffsschrift and Leibniz's Characteristica Universalis: a language for making thought precise enough that ambiguity has nowhere to hide.
-
 ## North Star
 
 Understand Gödel's first incompleteness theorem deeply enough to formalize a clear version of it in Lean 4, with each informal bridge replaced by explicit definitions and proofs.
+
+## Leitmotifs
+
+- Lean as Begriffsschrift / Characteristica Universalis rather than ordinary programming.
+- Formalization as a way to test whether an apparent understanding survives exact notation.
+
+These are not side ideas. They govern the whole project: explanations, source selection, Lean design, and the choice of what counts as progress.
 
 ## Current Lean Artifact
 
