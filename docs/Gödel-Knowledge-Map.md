@@ -23,17 +23,13 @@ These are not side ideas. They govern the whole project: explanations, source se
 - a quotation-like syntax for PM-style examples;
 - a few computed examples.
 
-It does not yet contain the proof infrastructure needed for incompleteness: syntax decoding, substitution, free-variable analysis, a proof calculus, representability, a provability predicate, the diagonal lemma, or the first incompleteness theorem.
+The desired approach is to continue the embedded PM target language as a Lean DSL using a custom syntax category. It does not yet contain the proof infrastructure needed for incompleteness: syntax decoding, substitution, free-variable analysis, a proof calculus, representability, a provability predicate, the diagonal lemma, or the first incompleteness theorem.
 
-## Source Roles To Confirm
+## Source Map
 
-The user's intended role for each PDF is pending. Current provisional grouping:
+The user's intended role for the PDFs is now recorded in `docs/Gödel-Source-Map.md`.
 
-- Core expository route: Nagel/Newman/Hofstadter, Peter Smith, Hirzel.
-- Mechanized proof route: O'Connor, Paulson, Kirst/Peters.
-- Diagonalization and self-reference route: Gaifman, Smullyan, Yanofsky, Abramsky/Zvesper.
-- Logic and proof-assistant background: Avigad, Pfenning, Wadler, Weaver, Chlipala, Winterhalter.
-- Possibly peripheral but relevant to formal semantics: O'Connor on Simplicity.
+Primary intention: complete an implementation of Gödel's first incompleteness theorem based on Gödel's original proof as outlined in Nagel, Newman, and Hofstadter, using O'Connor's Coq formalization as the primary mechanized example and Paulson's Isabelle formalization as the secondary mechanized example.
 
 ## Working Norms
 
@@ -45,6 +41,6 @@ The user's intended role for each PDF is pending. Current provisional grouping:
 
 ## Open Decisions
 
-- Which proof route should be primary: traditional arithmetization, Rosser, abstract computability, HF set theory, or another route?
 - How faithful should the Lean formalization remain to Nagel/Newman versus using cleaner modern syntax and proof infrastructure?
 - What minimal theorem statement should count as the first major destination?
+- How much of O'Connor's Coq infrastructure should be mirrored directly versus adapted to Lean-native idioms?

@@ -2,7 +2,7 @@
 
 This is a placeholder for the staged course plan. It should be filled only after:
 
-1. The user explains the intended purpose of each PDF and `Logic/Gödel.lean`.
+1. The user explains the intended purpose of each PDF and `Logic/Gödel.lean`. Done; see `docs/Gödel-Source-Map.md`.
 2. The assistant asks about the user's background in logic and foundations of mathematics.
 3. The user answers enough to calibrate pacing, prerequisites, and proof-route choices.
 
