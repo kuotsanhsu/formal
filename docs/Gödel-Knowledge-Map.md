@@ -33,7 +33,8 @@ Primary intention: complete an implementation of Gödel's first incompleteness t
 
 First formal target: construct a Gödel sentence for a specific PM-flavored arithmetic theory, modeled on Nagel, Newman, and Hofstadter's `~ (∃x) Dem (x, Sub (n, 17, n))`. Use a clean Lean representation internally, with the DSL as notation where it clarifies the object language.
 
-Key live confusion to clarify repeatedly: substitution is first a metalevel operation on syntax, but Gödel internalizes it by coding formulas as numbers and then representing the substitution function or relation arithmetically inside the target theory. Likewise, `Dem` begins as a metalevel proof-checking relation on codes and becomes an arithmetically represented relation. Do not let the notation hide this crossing between syntax, numbers, and formulas.
+> [!WARNING]
+> Key live confusion to clarify repeatedly: substitution is first a metalevel operation on syntax, but Gödel internalizes it by coding formulas as numbers and then representing the substitution function or relation arithmetically inside the target theory. Likewise, `Dem` begins as a metalevel proof-checking relation on codes and becomes an arithmetically represented relation. Do not let the notation hide this crossing between syntax, numbers, and formulas.
 
 ## Working Norms
 

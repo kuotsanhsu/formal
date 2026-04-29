@@ -32,6 +32,7 @@ Current decisions:
 - Do not start with essential incompleteness as the target theorem.
 - Start with PM-flavored arithmetic in the Nagel/Newman/Hofstadter sense, while remaining alert that literal historical PM may be much harder than an O'Connor-style weak arithmetic.
 - Use a clean Lean representation internally. Preserve the current DSL idea as notation over that representation where it helps thought.
+- Use de Bruijn indices internally for binding and substitution. Layer named-variable notation on top through the DSL, and consider widgets later for readable display or interaction.
 
 Clarification to keep active: `Sub` should not be treated as magic object-language syntax. Substitution starts as a Lean/metalevel operation on object-language expressions; after Gödel coding, it becomes a numerical function or relation on codes; after representability, it is expressed by a formula of the target arithmetic. `Dem` has the same three-level pattern: proof checking at the metalevel, a numerical relation on codes, then a represented formula.
 
@@ -39,10 +40,9 @@ Questions:
 
 - What should count as the first completed theorem: semantic incompleteness, syntactic incompleteness, essential incompleteness of arithmetic, or a Gödel sentence for a specific theory?
 - Should the target theory initially be a PM-flavored arithmetic, Peano arithmetic, Robinson arithmetic, or a custom minimal arithmetic close to O'Connor?
-- How faithful should the syntax remain to Nagel/Newman notation versus a cleaner Lean inductive representation?
 - When should `Dem` and `Sub` first enter the development: as raw metalevel functions/relations, as coded numerical operations, as represented formulas, or with explicit layers for all three?
 
-Deliverable: a short design note and a Lean namespace/module plan.
+Deliverable: a short design note and a Lean namespace/module plan. Initial version: `docs/Gödel-Stage0-Design.md`.
 
 ## Stage 1: Primitive Recursion As The Missing Bridge
 
