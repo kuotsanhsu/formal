@@ -31,27 +31,27 @@ namespace Term
 /-- The object-language numeral for a metalevel natural number. -/
 def numeral : Nat → Term
   | 0 => zero
-  | n + 1 => succ (numeral n)
+  | n + 1 => (numeral n).succ
 
 /-- Raise free variable indices at or above `cutoff` by `amount`. -/
 def liftAbove (cutoff amount : Nat) : Term → Term
   | var x => if cutoff ≤ x then var (x + amount) else var x
   | zero => zero
-  | succ t => succ (liftAbove cutoff amount t)
-  | add t u => add (liftAbove cutoff amount t) (liftAbove cutoff amount u)
-  | mul t u => mul (liftAbove cutoff amount t) (liftAbove cutoff amount u)
+  | succ t => (t.liftAbove cutoff amount).succ
+  | add t u => add (t.liftAbove cutoff amount) (u.liftAbove cutoff amount)
+  | mul t u => mul (t.liftAbove cutoff amount) (u.liftAbove cutoff amount)
 
 /-- Raise every free variable index by `amount`. -/
 def lift (amount : Nat) : Term → Term :=
-  liftAbove 0 amount
+  fun t => t.liftAbove 0 amount
 
 /-- Simultaneous metalevel substitution on terms. -/
 def subst (σ : Var → Term) : Term → Term
   | var x => σ x
   | zero => zero
-  | succ t => succ (subst σ t)
-  | add t u => add (subst σ t) (subst σ u)
-  | mul t u => mul (subst σ t) (subst σ u)
+  | succ t => (t.subst σ).succ
+  | add t u => add (t.subst σ) (u.subst σ)
+  | mul t u => mul (t.subst σ) (u.subst σ)
 
 end Term
 
@@ -65,22 +65,22 @@ def substUnder (σ : Var → Term) : Var → Term
 /-- Raise free variable indices at or above `cutoff` by `amount`. -/
 def liftAbove (cutoff amount : Nat) : Formula → Formula
   | eq t u => eq (t.liftAbove cutoff amount) (u.liftAbove cutoff amount)
-  | not p => not (liftAbove cutoff amount p)
-  | or p q => or (liftAbove cutoff amount p) (liftAbove cutoff amount q)
-  | imp p q => imp (liftAbove cutoff amount p) (liftAbove cutoff amount q)
-  | ex p => ex (liftAbove (cutoff + 1) amount p)
+  | not p => not (p.liftAbove cutoff amount)
+  | or p q => or (p.liftAbove cutoff amount) (q.liftAbove cutoff amount)
+  | imp p q => imp (p.liftAbove cutoff amount) (q.liftAbove cutoff amount)
+  | ex p => ex (p.liftAbove (cutoff + 1) amount)
 
 /-- Raise every free variable index by `amount`. -/
 def lift (amount : Nat) : Formula → Formula :=
-  liftAbove 0 amount
+  fun p => p.liftAbove 0 amount
 
 /-- Simultaneous capture-avoiding metalevel substitution on formulas. -/
 def subst (σ : Var → Term) : Formula → Formula
   | eq t u => eq (t.subst σ) (u.subst σ)
-  | not p => not (subst σ p)
-  | or p q => or (subst σ p) (subst σ q)
-  | imp p q => imp (subst σ p) (subst σ q)
-  | ex p => ex (subst (substUnder σ) p)
+  | not p => not (p.subst σ)
+  | or p q => or (p.subst σ) (q.subst σ)
+  | imp p q => imp (p.subst σ) (q.subst σ)
+  | ex p => ex (p.subst (substUnder σ))
 
 end Formula
 
@@ -88,15 +88,11 @@ namespace Example
 
 open Term Formula
 
-/-- `∃. #0 = #1`, where `#0` is bound and `#1` is the first outer variable. -/
-def boundEqOuter : Formula :=
-  ex (eq (var 0) (var 1))
+def «∃ x, x = y» : Formula := ex (eq (var 0) (var 1))
 
-example : Term.numeral 3 = succ (succ (succ zero)) := rfl
+example : numeral 3 = zero.succ.succ.succ := rfl
 
-example : boundEqOuter.subst (fun
-    | 0 => zero
-    | x + 1 => var (x + 1)) = ex (eq (var 0) zero) := rfl
+example : «∃ x, x = y».subst (fun _ => zero.succ) = ex (eq (var 0) zero.succ) := rfl
 
 end Example
 

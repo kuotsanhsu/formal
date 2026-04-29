@@ -8,6 +8,11 @@ These instructions apply to the whole repository.
 - Do not add unnecessary hard line breaks inside Markdown paragraphs. The user reads Markdown in VS Code with soft wrapping.
 - Keep durable instruction files concise. If this file or similar directory-aware hint files grow long, discuss a revision with the user.
 
+## Lean Style
+
+- Prefer OOP-style member access for non-constructor namespaced definitions when it is available and clear, for example `p.subst σ` instead of `Formula.subst σ p`.
+- Do not force constructor-style member access such as `p.not` when ordinary constructor application is clearer. Exception: use `.succ` when it avoids excess parentheses in term expressions.
+
 ## Project Leitmotifs
 
 - Treat Lean 4 as Begriffsschrift / Characteristica Universalis: a disciplined notation for thought, not ordinary programming.

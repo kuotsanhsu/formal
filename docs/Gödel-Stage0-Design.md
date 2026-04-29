@@ -27,6 +27,8 @@ Notation discipline: if `F` is an object-language formula represented in Lean, t
 > [!IMPORTANT]
 > The metatheory chooses the number because it codes a formula; the object theory only receives a numeral denoting that number.
 
+For now, keep object-language numerals explicit as `Term.numeral n` in the core development. An `OfNat` instance may be convenient later in a notation layer, but replacing `Term.numeral` too early risks hiding the metatheory/object-language distinction.
+
 ## Current Lean File
 
 `Logic/Gödel.lean` is useful but should be treated as a prototype. One immediate naming issue is that the current `Formula` datatype is really the datatype of arithmetic terms, while the current `Predicate` datatype is closer to the datatype of formulas. A cleaner internal representation should probably use names like `Term` and `Formula`, with the custom DSL becoming notation over those datatypes.
