@@ -26,11 +26,21 @@ Non-route: incompleteness via the halting problem is useful context but not the 
 
 Purpose: fix the exact theorem target, object language, proof calculus, and Lean representation strategy.
 
+Current decisions:
+
+- First target: construct a Gödel sentence for a specific theory, modeled on Nagel, Newman, and Hofstadter's `~ (∃x) Dem (x, Sub (n, 17, n))`.
+- Do not start with essential incompleteness as the target theorem.
+- Start with PM-flavored arithmetic in the Nagel/Newman/Hofstadter sense, while remaining alert that literal historical PM may be much harder than an O'Connor-style weak arithmetic.
+- Use a clean Lean representation internally. Preserve the current DSL idea as notation over that representation where it helps thought.
+
+Clarification to keep active: `Sub` should not be treated as magic object-language syntax. Substitution starts as a Lean/metalevel operation on object-language expressions; after Gödel coding, it becomes a numerical function or relation on codes; after representability, it is expressed by a formula of the target arithmetic. `Dem` has the same three-level pattern: proof checking at the metalevel, a numerical relation on codes, then a represented formula.
+
 Questions:
 
 - What should count as the first completed theorem: semantic incompleteness, syntactic incompleteness, essential incompleteness of arithmetic, or a Gödel sentence for a specific theory?
 - Should the target theory initially be a PM-flavored arithmetic, Peano arithmetic, Robinson arithmetic, or a custom minimal arithmetic close to O'Connor?
 - How faithful should the syntax remain to Nagel/Newman notation versus a cleaner Lean inductive representation?
+- When should `Dem` and `Sub` first enter the development: as raw metalevel functions/relations, as coded numerical operations, as represented formulas, or with explicit layers for all three?
 
 Deliverable: a short design note and a Lean namespace/module plan.
 
@@ -73,6 +83,7 @@ Content:
 - Prime-power coding versus alternative encodings.
 - Relation between Nagel/Newman coding and mechanized encodings in Coq/Isabelle.
 - What must be proved about the code, not just computed.
+- Possible later use of Lean widgets to visualize syntax trees, substitutions, and Gödel codes if textual notation becomes unwieldy.
 
 Lean target: prove injectivity/decoding properties or deliberately choose a coding scheme with better proof ergonomics while preserving conceptual fidelity.
 

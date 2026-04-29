@@ -31,6 +31,10 @@ The user's intended role for the PDFs is now recorded in `docs/Gödel-Source-Map
 
 Primary intention: complete an implementation of Gödel's first incompleteness theorem based on Gödel's original proof as outlined in Nagel, Newman, and Hofstadter, using O'Connor's Coq formalization as the primary mechanized example and Paulson's Isabelle formalization as the secondary mechanized example.
 
+First formal target: construct a Gödel sentence for a specific PM-flavored arithmetic theory, modeled on Nagel, Newman, and Hofstadter's `~ (∃x) Dem (x, Sub (n, 17, n))`. Use a clean Lean representation internally, with the DSL as notation where it clarifies the object language.
+
+Key live confusion to clarify repeatedly: substitution is first a metalevel operation on syntax, but Gödel internalizes it by coding formulas as numbers and then representing the substitution function or relation arithmetically inside the target theory. Likewise, `Dem` begins as a metalevel proof-checking relation on codes and becomes an arithmetically represented relation. Do not let the notation hide this crossing between syntax, numbers, and formulas.
+
 ## Working Norms
 
 - Keep Gödel's first incompleteness theorem as the main project.
@@ -41,6 +45,7 @@ Primary intention: complete an implementation of Gödel's first incompleteness t
 
 ## Open Decisions
 
-- How faithful should the Lean formalization remain to Nagel/Newman versus using cleaner modern syntax and proof infrastructure?
 - What minimal theorem statement should count as the first major destination?
 - How much of O'Connor's Coq infrastructure should be mirrored directly versus adapted to Lean-native idioms?
+- How hard will PM-flavored arithmetic be compared with an O'Connor-style weak arithmetic, and where should we switch if the PM flavor becomes distracting?
+- Whether Lean widgets should later be introduced to visualize or interact with complex syntax trees, substitutions, proof objects, or Gödel numbering when ordinary notation becomes unwieldy.
