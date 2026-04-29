@@ -29,6 +29,8 @@ The desired approach is to continue the embedded PM target language as a Lean DS
 
 The user's intended role for the PDFs is now recorded in `docs/Gödel-Source-Map.md`.
 
+The route rationale is recorded in `docs/Gödel-Design-Rationale.md`.
+
 Primary intention: complete an implementation of Gödel's first incompleteness theorem based on Gödel's original proof as outlined in Nagel, Newman, and Hofstadter, using O'Connor's Coq formalization as the primary mechanized example and Paulson's Isabelle formalization as the secondary mechanized example.
 
 First formal target: construct a Gödel sentence for a specific PM-flavored arithmetic theory, modeled on Nagel, Newman, and Hofstadter's `~ (∃x) Dem (x, Sub (n, 17, n))`. Use a clean Lean representation internally, with the DSL as notation where it clarifies the object language.

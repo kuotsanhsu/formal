@@ -8,6 +8,8 @@ The first concrete target is not the full first incompleteness theorem. The firs
 
 The working reading of "PM-flavored" is not literal historical Principia Mathematica. It means a first-order arithmetic target language with Nagel/Newman/Hofstadter-style notation and enough arithmetic to carry the arithmetization argument.
 
+The route is arithmetization, not incompleteness via the halting problem. The detailed rationale is recorded in `docs/Gödel-Design-Rationale.md`.
+
 ## Layer Discipline
 
 The project must keep the following layers distinct.
