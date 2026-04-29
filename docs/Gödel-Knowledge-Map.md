@@ -25,6 +25,8 @@ These are not side ideas. They govern the whole project: explanations, source se
 
 The desired approach is to continue the embedded PM target language as a Lean DSL using a custom syntax category. It does not yet contain the proof infrastructure needed for incompleteness: syntax decoding, substitution, free-variable analysis, a proof calculus, representability, a provability predicate, the diagonal lemma, or the first incompleteness theorem.
 
+`Logic/Gödel/Syntax.lean` starts the cleaner internal core: de Bruijn-indexed terms and formulas, object-language numerals, lifting, and simultaneous capture-avoiding metalevel substitution.
+
 ## Source Map
 
 The user's intended role for the PDFs is now recorded in `docs/Gödel-Source-Map.md`.

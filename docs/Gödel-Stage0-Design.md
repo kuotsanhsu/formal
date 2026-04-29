@@ -22,9 +22,16 @@ The project must keep the following layers distinct.
 > [!WARNING]
 > The dangerous ambiguity is to treat `Sub` or `Dem` as if it simply lives at one level. It does not. `Sub` starts as metalevel substitution on syntax, then becomes a numerical operation or relation on Gödel codes, then becomes an object-language formula representing that operation or relation. `Dem` starts as metalevel proof checking, then becomes a numerical relation on proof and formula codes, then becomes an object-language formula representing that relation.
 
+Notation discipline: if `F` is an object-language formula represented in Lean, then `code(F)` or `⌜F⌝` is a metatheoretic natural number. The object language does not contain that metatheoretic number directly. It contains a numeral for it, such as `Term.numeral (code F)`. In informal expositions, a displayed symbol like `n` may slide between "the number assigned in the metatheory" and "the object-language numeral denoting that number"; the Lean development must not allow this slide silently.
+
+> [!IMPORTANT]
+> The metatheory chooses the number because it codes a formula; the object theory only receives a numeral denoting that number.
+
 ## Current Lean File
 
 `Logic/Gödel.lean` is useful but should be treated as a prototype. One immediate naming issue is that the current `Formula` datatype is really the datatype of arithmetic terms, while the current `Predicate` datatype is closer to the datatype of formulas. A cleaner internal representation should probably use names like `Term` and `Formula`, with the custom DSL becoming notation over those datatypes.
+
+`Logic/Gödel/Syntax.lean` now starts this cleaner internal representation with de Bruijn-indexed terms and formulas, object-language numerals, lifting, and simultaneous capture-avoiding metalevel substitution.
 
 ## Initial Internal Syntax
 
@@ -62,3 +69,5 @@ Lean widgets may become useful later for visualizing syntax trees, substitutions
 ## Stage 0 Completion Criteria
 
 Stage 0 is complete when we have split the current file, written the first small Lean module for de Bruijn-based syntax, and added enough notation or examples to confirm that the internal representation can still be read in a Nagel/Newman/Hofstadter style.
+
+Progress: the first de Bruijn-based syntax module has been written and checked by `lake build`. The notation layer remains to be designed.
