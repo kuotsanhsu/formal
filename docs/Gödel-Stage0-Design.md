@@ -35,6 +35,8 @@ For now, keep object-language numerals explicit as `Term.numeral n` in the core 
 
 `Logic/Gödel/Syntax.lean` now starts this cleaner internal representation with de Bruijn-indexed terms and formulas, object-language numerals, lifting, and simultaneous capture-avoiding metalevel substitution.
 
+`Logic/Gödel/Notation.lean` adds a first direct de Bruijn notation layer using `term!{...}` and `form!{...}`. It is intentionally not yet a named-variable DSL; it exposes indices such as `#0` and `#1` so the binding structure remains visible while the core operations are still being checked.
+
 ## Initial Internal Syntax
 
 A likely first internal representation:
@@ -72,4 +74,4 @@ Lean widgets may become useful later for visualizing syntax trees, substitutions
 
 Stage 0 is complete when we have split the current file, written the first small Lean module for de Bruijn-based syntax, and added enough notation or examples to confirm that the internal representation can still be read in a Nagel/Newman/Hofstadter style.
 
-Progress: the first de Bruijn-based syntax module has been written and checked by `lake build`. The notation layer remains to be designed.
+Progress: the first de Bruijn-based syntax module and a direct de Bruijn notation layer have been written and checked by `lake build`. The named-variable DSL layer remains to be designed.
